@@ -1479,3 +1479,54 @@ window.addEventListener("beforeunload", function (e) {
 	}
 
 });
+
+/* CUSTOM JAVASCRIPT */
+
+$(document).ready(function() {
+
+	/* SCROLL REVEAL */
+
+	var scrollOptions = {
+	    scale: 1,
+	    duration: 1500,
+	    distance: 0,
+	}
+
+	window.sr = ScrollReveal();
+	sr.reveal('.thumbnail', scrollOptions);
+
+	/* MODAL FADE */
+
+	var clientsLink = $('#p13083059');
+
+	clientsLink.click(function() {
+	    setTimeout(function() {
+	        var clients = $('.clients-container');
+	        clients.css('opacity', '1')},
+	    1)
+	});
+	
+	/* LANDING PAGE */
+	        
+	var $landingPage = $('.landing-page-container');
+
+	function setActiveState() {
+	    $('html, body').css('overflow-x', 'visible');
+	    $('.site_header, .mobile_site_header').css('opacity', '1');
+	}
+	 
+	if (sessionStorage.getItem('active') === 'true') {
+	    $landingPage.css('display', 'none'); 
+	    setActiveState();
+	}
+	        
+	$landingPage.click(function() {
+	    $landingPage.css('opacity', '0'); 
+	    setActiveState();
+	    setTimeout(function() {$landingPage.css('display', 'none')}, 1000);
+	    sessionStorage.setItem('active', true);                            
+	});
+
+	setTimeout(function() {$('.landing-logo').css('opacity', '1')}, 4);	
+});
+
