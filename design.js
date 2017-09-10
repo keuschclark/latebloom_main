@@ -1522,7 +1522,7 @@ $(document).ready(function() {
 	    setActiveState();
 	}
 	        
-	$landingPage.click(function() {
+	$landingPage.on('click touchstart', function() {
 	    $landingPage.css('opacity', '0'); 
 	    setActiveState();
 	    setTimeout(function() {$landingPage.css('display', 'none')}, 1000);
@@ -1533,7 +1533,9 @@ $(document).ready(function() {
 
 	/* BURGER */
 	var burger = $('.hamburger');
+	// var burgerInner = $('.hamburger-inner:before');
 	var customNav = $('.custom-nav');
+	var container = $('.container');
 
 	burger.click(function() {
 		$(this).toggleClass('is-active');
@@ -1541,11 +1543,17 @@ $(document).ready(function() {
 	});
 
 	function toggleCustomNav() {
-		if (customNav.css('display') === 'none') {
-			customNav.css('display', 'block');
-			customNav.css('min-height', '100%');
+		if (customNav.css('width') === '0px') {
+			customNav.css('width', '250px');
+			container.css('margin-left', '-500px');
+			burger.css('margin-right', '120px');
+			// burgerInner.css('background', 'white !important');
+			// console.log(burgerInner)
 		} else {
-			customNav.css('display', 'none');
+			customNav.css('width', '0');
+			container.css('margin-left', '0');
+			burger.css('margin-right', '0');
+			// burgerInner.css('background', 'black');
 		}
 	};
 });
